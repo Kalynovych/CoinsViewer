@@ -4,15 +4,18 @@ namespace CoinsViewer
 {
     public class NavigationManager
     {
-        public void NavigateToPage(Frame frame, string pageName)
+        public void NavigateToPage(Frame frame, string pageName, object parameter = null)
         {
             switch (pageName)
             {
                 case "mainPage":
-                    frame.Navigate(typeof(MainPage));
+                    frame.Navigate(typeof(MainPage), parameter);
                     break;
                 case "searchPage":
-                    frame.Navigate(typeof(SearchPage));
+                    frame.Navigate(typeof(SearchPage), parameter);
+                    break;
+                case "detailedInfo":
+                    frame.Navigate(typeof(DetailedInfo), parameter);
                     break;
                 default:
                     break;

@@ -84,7 +84,7 @@
                 <Image Height="25" Source="/Assets/first.png"/>
             </Button>
             <Button Padding="0" Margin="5,0,5,0" Click="PreviousPage_Click">
-                <Image Height="25" Source="/Assets/back.png"/>
+                <Image Height="25" Source="/Assets/previous.png"/>
             </Button>
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                 <TextBlock Text="{x:Bind _pagingController.CurrentPage}"/>
@@ -92,7 +92,7 @@
                 <TextBlock Text="{x:Bind _pagingController.Pages}"/>
             </StackPanel>
             <Button Padding="0" Margin="5,0,5,0" Click="NextPage_Click">
-                <Image Height="25" Source="/Assets/forward.png"/>
+                <Image Height="25" Source="/Assets/next.png"/>
             </Button>
             <Button Padding="0" Margin="5,0,10,0" Click="LastPage_Click">
                 <Image Height="25" Source="/Assets/last.png"/>

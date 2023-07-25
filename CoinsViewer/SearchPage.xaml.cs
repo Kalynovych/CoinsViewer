@@ -58,7 +58,8 @@ namespace CoinsViewer
 
         private void AssetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //TODO: Asset selected
+            ListView listView = (ListView)sender;
+            _navigationManager.NavigateToPage(Frame, "detailedInfo", listView.SelectedItem);
         }
 
         private void Page_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using CoinsViewer.API.CoinCap.Model;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -68,7 +69,8 @@ namespace CoinsViewer
 
         private void AssetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //TODO: Asset selected
+            ListView listView = (ListView)sender;
+            _navigationManager.NavigateToPage(Frame, "detailedInfo", listView.SelectedItem);
         }
 
         private void AssetsPerPage_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
