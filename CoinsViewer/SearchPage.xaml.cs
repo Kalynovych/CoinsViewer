@@ -7,13 +7,13 @@ namespace CoinsViewer
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class SearchPage : Page
     {
         private PagingController _pagingController;
         private NavigationManager _navigationManager;
         private uint _assetsPerPage;
 
-        public MainPage()
+        public SearchPage()
         {
             InitializeComponent();
             _pagingController = new PagingController();
@@ -56,6 +56,11 @@ namespace CoinsViewer
             Bindings.Update();
         }
 
+        private void AssetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //TODO: Asset selected
+        }
+
         private void Page_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListView listView = (ListView)sender;
@@ -66,9 +71,10 @@ namespace CoinsViewer
             }
         }
 
-        private void AssetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void Search_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Asset selected
+            await _pagingController.Search(searchTextBox.Text);
+            Bindings.Update();
         }
 
         private void AssetsPerPage_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
