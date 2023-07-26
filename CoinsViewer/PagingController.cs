@@ -3,8 +3,6 @@ using System.Threading.Tasks;
 using CoinsViewer.API.CoinCap.Model;
 using CoinsViewer.API.CoinCap;
 using Windows.UI.Xaml.Controls;
-using Windows.ApplicationModel.Activation;
-using System;
 
 namespace CoinsViewer
 {
@@ -37,6 +35,7 @@ namespace CoinsViewer
 
         public async Task SetAssetsPerPage()
         {
+            CurrentPage = 1;
             CountPages();
             await SetAssets(AssetsPerPage);
         }

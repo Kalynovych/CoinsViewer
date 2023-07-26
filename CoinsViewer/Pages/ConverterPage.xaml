@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="CoinsViewer.ConverterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CoinsViewer"
+    xmlns:models="using:CoinsViewer.API.CoinCap.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="0" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" SelectionChanged="Page_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel  Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListViewItem Name="mainPage" HorizontalContentAlignment="Center">
+                <TextBlock Text="Main page"/>
+            </ListViewItem>
+            <ListViewItem Name="searchPage" HorizontalContentAlignment="Center">
+                <TextBlock Text="Search"/>
+            </ListViewItem>
+            <ListViewItem Name="converterPage" HorizontalContentAlignment="Center" IsSelected="True">
+                <TextBlock Text="Convert"/>
+            </ListViewItem>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Margin="0,20,0,0" Orientation="Vertical" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Margin="5" FontSize="20" Text="Convertion type" VerticalAlignment="Center"/>
+                <ComboBox Margin="5" x:Name="convertionType" FontSize="20" Width="233" SelectionChanged="ConvertionType_SelectionChanged">
+                    <ComboBoxItem>fiat to fiat</ComboBoxItem>
+                    <ComboBoxItem>fiat to crypto</ComboBoxItem>
+                    <ComboBoxItem>crypto to fiat</ComboBoxItem>
+                    <ComboBoxItem>crypto to crypto</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5" FontSize="20" Text="Convert from" VerticalAlignment="Center"/>
+                <ComboBox Margin="5" x:Name="convertFrom" FontSize="20" Width="100" MaxDropDownHeight="200" ItemsSource="{x:Bind _rates}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:Rate">
+                            <TextBlock Text="{x:Bind Symbol}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Margin="5" VerticalAlignment="Center" Click="Swap_Click">
+                    <Image Height="20" Source="/Assets/swap.png"/>
+                </Button>
+                <ComboBox Margin="5" x:Name="convertTo" FontSize="20" Width="100" MaxDropDownHeight="200" ItemsSource="{x:Bind _rates}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:Rate">
+                            <TextBlock Text="{x:Bind Symbol}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Margin="5" Text="Amount" FontSize="20" VerticalAlignment="Center"/>
+                <TextBox Margin="5" Width="204" x:Name="amount" FontSize="20" InputScope="Number" Text="{x:Bind _amountOfCurrency}" TextChanged="Amount_TextChanged" BeforeTextChanging="Amount_BeforeTextChanging"/>
+                <Button Margin="5" VerticalAlignment="Top" FontSize="20" Click="Convert_Click">Convert</Button>
+            </StackPanel>
+            <TextBlock Margin="15" x:Name="convertionResult" HorizontalAlignment="Center" FontSize="20"/>
+        </StackPanel>
+    </Grid>
+</Page>

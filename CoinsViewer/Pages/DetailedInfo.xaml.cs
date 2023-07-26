@@ -33,7 +33,7 @@ namespace CoinsViewer
             Bindings.Update();
         }
 
-        private async void Back_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
             if (Frame.CanGoBack)
             {

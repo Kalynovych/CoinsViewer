@@ -41,7 +41,7 @@
                 <TextBlock Margin="5" Text="{x:Bind _asset.VolumeWeightedAveragePrice}"/>
                 <TextBlock Margin="5"><Hyperlink NavigateUri="{x:Bind _asset.Explorer}">Explore</Hyperlink></TextBlock>
 
-                <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" Text="Exchange markets"/>
+                <TextBlock Margin="0,10,0,0" FontSize="20" HorizontalAlignment="Center" Text="Exchange markets"/>
                 <Border Grid.Row="1" Margin="0,10,0,0" BorderBrush="Gray" BorderThickness="0,2,0,0">
                     <ListView ItemsSource="{x:Bind _exchangeMarket}" SelectionChanged="ExchangeMarket_SelectionChanged">
                         <ListView.ItemTemplate>

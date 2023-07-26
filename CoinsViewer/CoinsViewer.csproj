@@ -122,21 +122,25 @@
     <Compile Include="API\CoinCap\Model\AssetsRequest.cs" />
     <Compile Include="API\CoinCap\Model\Asset.cs" />
     <Compile Include="API\CoinCap\Model\ExchangeMarket.cs" />
+    <Compile Include="API\CoinCap\Model\Rate.cs" />
     <Compile Include="API\CoinCap\Model\ResponseArray.cs" />
     <Compile Include="API\CoinCap\Model\HistoricalPrice.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DetailedInfo.xaml.cs">
+    <Compile Include="Pages\ConverterPage.xaml.cs">
+      <DependentUpon>ConverterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DetailedInfo.xaml.cs">
       <DependentUpon>DetailedInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="NavigationManager.cs" />
     <Compile Include="PagingController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchPage.xaml.cs">
+    <Compile Include="Pages\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -155,6 +159,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
     <Content Include="Assets\Square71x71Logo.scale-100.png" />
     <Content Include="Assets\Square71x71Logo.scale-125.png" />
+    <Content Include="Assets\swap.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
@@ -168,15 +173,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="DetailedInfo.xaml">
+    <Page Include="Pages\ConverterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\DetailedInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SearchPage.xaml">
+    <Page Include="Pages\SearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

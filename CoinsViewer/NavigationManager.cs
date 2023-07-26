@@ -17,6 +17,9 @@ namespace CoinsViewer
                 case "detailedInfo":
                     frame.Navigate(typeof(DetailedInfo), parameter);
                     break;
+                case "converterPage":
+                    frame.Navigate(typeof(ConverterPage), parameter);
+                    break;
                 default:
                     break;
             }

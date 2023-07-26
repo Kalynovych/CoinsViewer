@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using CoinsViewer.API.CoinCap.Model;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Windows.Web.Http;
 
@@ -14,11 +12,12 @@ namespace CoinsViewer.API.CoinCap
     {
         private readonly Uri _baseEndpoint;
         private readonly HttpClient _client;
+        private const string _pathToApi = "https://api.coincap.io/v2/";
 
         public CoinCapApiService()
         {
             _client = new HttpClient();
-            _baseEndpoint = new Uri("https://api.coincap.io/v2/");
+            _baseEndpoint = new Uri(_pathToApi);
         }
 
         public async Task<List<Asset>> GetAssets(uint count = 10, uint skip = 0, string search = "")
@@ -52,6 +51,12 @@ namespace CoinsViewer.API.CoinCap
             return await GetListOfData<HistoricalPrice>(endPoint);
         }
 
+        public async Task<List<Rate>> GetRates()
+        {
+            Uri endPoint = new Uri(_baseEndpoint, "rates");
+            return (await GetListOfData<Rate>(endPoint)).OrderBy(r => r.Symbol).ToList();
+        }
+
         private async Task<List<T>> GetListOfData<T>(Uri endPoint)
         {
             var response = await _client.GetAsync(endPoint);
@@ -63,8 +68,8 @@ namespace CoinsViewer.API.CoinCap
 
         private (string, string) GetPeriod(int period)
         {
-            DateTime? startDate = null;
             DateTime endDate = DateTime.Now;
+            DateTime? startDate;
 
             switch (period)
             {
